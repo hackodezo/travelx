@@ -1,12 +1,51 @@
+<table border="2px">
+	<thead>
+		<tr>
+			<th>Heading:</th>
+			<th>Room:</th>
+			<th>Bedrooms:</th>
+			<th>Beds:</th>
+			<th>Bathrooms</th>
+			<th>Ocuupancy</th>
+			<th>Location</th>
+			<th>Description</th>
+			<th>Price Monthly</th>
+			<th>Price Nightly</th>
+			<th>Price Weekend</th>
+			<th>Price Weekly</th>
+			<th>Photo</th>
+			<th>Address</th>
+			<th>Provider</th>
+			<th>Url</th>
+			<th>Rating</th>
+			</tr
+		</tr>
+	</thead>
+	<tbody>
+		
 <%@results.each do |result|%>
-	Heading:<%= result["attr"]["heading"]%>
-	Room:<%= result["attr"]["roomType"]["text"]%>
-	Bedrooms:<%= result["attr"]["bedrooms"]%>
-	Beds:<%= result["attr"]["beds"]%>
-	Bathrooms<%= result["attr"]["bathrooms"]%>
-	Ocuupancy<%= result["attr"]["occupancy"]%>
-	Description<%= result["attr"]["description"]%>
+	<tr>
+	<td><%= result["attr"]["heading"]%></td>
+	<td><%= result["attr"]["roomType"]["text"]%></td>
+	<td><%= result["attr"]["bedrooms"]%></td>
+	<td><%= result["attr"]["beds"]%></td>
+	<td><%= result["attr"]["bathrooms"]%></td>
+	<td><%= result["latLng"]%></td>
+	<td><%= result["attr"]["occupancy"]%></td>
+	<td><%= result["attr"]["description"]%></td>
+	<td><%= result["price"]["monthly"]%></td>
+	<td><%= result["price"]["nightly"]%></td>
+	<td><%= result["price"]["weekend"]%></td>
+	<td><%= result["price"]["weekly"]%></td>
+	<td><%= image_tag result["photos"][0]["large"]%></td>
+	<td><%= result["location"]["all"]%></td>
+	<td><%= result["provider"]["full"]%></td>
+	<td><%= result["provider"]["url"]%></td>
+	<td><%= result["reviews"]["rating"]%></td>
 
+		</tr>
+	
 
-	LATITUDE<%= result["latLng"]%><br>
 <%end%>
+</tbody>
+</table>
