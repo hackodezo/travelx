@@ -11,13 +11,12 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
      @location=Location.find(params[:id])
-     @results =JSON.parse(HTTParty.get("https://zilyo.p.mashape.com/search?latitude=12.9250074&longitude=77.5938028&maxdistance=20&resultsperpage=50&page=2",headers:{
+     @junk =JSON.parse(HTTParty.get("https://zilyo.p.mashape.com/search?latitude=#{@location.latitude}&longitude=#{@location.longitude}&maxdistance=20&resultsperpage=5&page=1",headers:{
    "X-Mashape-Key" => "gtestym0nmmshZQTFzjLJ2kH7VTUp1y0daBjsnHTbCjBjNUf2Q",
    "Content-Type" => "application/json"
     }))
 
-     @r=@results["result"]
-     binding.pry
+     @results=@junk["result"]
   end
 
   # GET /locations/new

@@ -1,0 +1,12 @@
+<%@results.each do |result|%>
+	Heading:<%= result["attr"]["heading"]%>
+	Room:<%= result["attr"]["roomType"]["text"]%>
+	Bedrooms:<%= result["attr"]["bedrooms"]%>
+	Beds:<%= result["attr"]["beds"]%>
+	Bathrooms<%= result["attr"]["bathrooms"]%>
+	Ocuupancy<%= result["attr"]["occupancy"]%>
+	Description<%= result["attr"]["description"]%>
+
+
+	LATITUDE<%= result["latLng"]%><br>
+<%end%>
