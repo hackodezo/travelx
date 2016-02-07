@@ -3,6 +3,9 @@
 ### About
 Travelx gives you access from over 2,500,000 Vacation Rental and Short term rentals listings across the world in over 200,000 travel destinations via 9 major service providers including Airbnb, HomeStay and much more...
 
+### Aim
+Our aim is to work on what we have created as part of a hackathon and scale it to new heights and release it as a Ruby Gem to not just fetch Vacation and Short Stay Rentals but also to filter out data on request. We envision it to be a Ruby Gem that sits on top of all short stay aggregrators. In order to do so we need full co-operation of the Ruby community and its invaluable contribution.
+
 ### Pre-Requisites:
 
 - Ruby Version: 2.2.3-p137
@@ -55,6 +58,10 @@ $ rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8
 ### To Dos
 - Google Maps Iteration Fix
 - Filter via API
+
+
+### License
+This project is licensed under the terms of the MIT license.
 
 ### By Welters
 - Kartik Sharma
