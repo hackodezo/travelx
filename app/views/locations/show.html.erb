@@ -1,5 +1,7 @@
 <div class="container">
+
 	<%@results.each do |result|%>
+	<div class="container container-background">
 	<div class="row">
 		<div class="page-header">
 	  	<h1><%= result["attr"]["heading"]%></h1>
@@ -10,9 +12,32 @@
 			<%= image_tag result["photos"][0]["large"], class: "img-thumbnail" %>
 		</div>
 		<div class="col-md-6">
-			<iframe width="600"height="450"frameborder="0" style="border:0"src="https://maps.google.com/maps?q='<%= result["latLng"]%>'&hl=es;z=14&amp;output=embed"></iframe>
-		</div>
+			<div id="map"><script>
+				var lat = #{result["latLng"][0]};
+				var lng = #{result["latLng"][1]};
+				var position =  new google.maps.LatLng(lat,lng);
+				var zoomLevel = 8;
+				var mapId = document.getElementById('map');
+				var map;
+				function initMap(){
+				map = new google.maps.Map(mapId, {
+				center: position,
+				zoom: zoomLevel,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+				});
+				}
+				google.maps.event.addListener(map, 'idle', function() {
 
+				var map_centre = map.getCenter();
+				lat = map_centre.lat();
+				lng = map_centre.lng();
+
+
+				}
+
+				});
+			</script></div>
+		</div>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default">
@@ -60,12 +85,17 @@
 				</address>
 			</div>
 			<div class="col-md-3">
-				<strong>Rating: </strong><%= result["reviews"]["rating"]%>
+				<strong>Rating: </strong><% if result["reviews"]["rating"].to_i < 0 %>
+																		<p>None</p>
+																	<% else %>
+																		<%= result["reviews"]["rating"] %>
+																	<% end %>
 			</div>
 			<div class="col-md-3">
-				<a href="mailto:<%= result["provider"]["url"]%>"><%= result["provider"]["url"]%></a><br>
+				<a href="<%= result["provider"]["url"]%>" class="btn btn-success">Book Now</a><br>
 			</div>
 		</div>
+	</div>
 	</div>
 	<% end %>
 </div>

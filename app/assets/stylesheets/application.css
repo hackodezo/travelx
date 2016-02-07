@@ -24,3 +24,16 @@
 	background-color: #df0031 ;
 	position: relative;
 }
+
+.container-background {
+	background-color: #efefef;
+	overflow: none;
+	border: 1px solid #ececec;
+	border-radius: 5px;
+	padding: 2.5%;
+	margin-bottom: 25px;
+}
+
+.container-background.row {
+	margin: 0 2.5%;
+}
