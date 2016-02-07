@@ -7,7 +7,8 @@ Travelx gives you access from over 2,500,000 Vacation Rental and Short term rent
 
 - Ruby Version: 2.2.3-p137
 - Rails Version: 4.2.4
-- PostgreSQL Version: 9.3
+- SQLite3 (Development)
+- PostgreSQL Version: 9.3 (Production)
 
 ### Installation:
 CD in to the cloned Application Directory and run below commands one by one:
