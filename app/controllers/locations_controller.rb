@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
      @location=Location.find(params[:id])
-     @junk =JSON.parse(HTTParty.get("https://zilyo.p.mashape.com/search?latitude=#{@location.latitude}&longitude=#{@location.longitude}&maxdistance=20&resultsperpage=5&page=1",headers:{
+     @junk =JSON.parse(HTTParty.get("https://zilyo.p.mashape.com/search?latitude=#{@location.latitude}&longitude=#{@location.longitude}&maxdistance=20&resultsperpage=25&page=1",headers:{
    "X-Mashape-Key" => "gtestym0nmmshZQTFzjLJ2kH7VTUp1y0daBjsnHTbCjBjNUf2Q",
    "Content-Type" => "application/json"
     }))

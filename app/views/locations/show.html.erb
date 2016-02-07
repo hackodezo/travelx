@@ -1,6 +1,6 @@
 <div class="container">
 
-	<%@results.each do |result|%>
+	<%@results.each do |result| %>
 	<div class="container container-background">
 	<div class="row">
 		<div class="page-header">
@@ -63,10 +63,10 @@
 						<h3 class="panel-title">Pricing</h3>
 					</div>
 					<div class="panel-body">
-						<p><strong>Monthly: </strong><%= result["price"]["monthly"]%></p>
-						<p><strong>Nightly: </strong><%= result["price"]["nightly"]%></p>
-						<p><strong>Weekly: </strong><%= result["price"]["weekly"]%></p>
-						<p><strong>Weekend: </strong><%= result["price"]["weekend"]%></p>
+						<p><strong>Monthly: $</strong><%= result["price"]["monthly"]%></p>
+						<p><strong>Nightly: $</strong><%= result["price"]["nightly"]%></p>
+						<p><strong>Weekly: $</strong><%= result["price"]["weekly"]%></p>
+						<p><strong>Weekend: $</strong><%= result["price"]["weekend"]%></p>
 					</div>
 				</div>
 			</div>
@@ -98,4 +98,3 @@
 	</div>
 	</div>
 	<% end %>
-</div>

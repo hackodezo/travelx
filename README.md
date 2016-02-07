@@ -31,7 +31,7 @@ $   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 $ end
 ```
 ### Version:
-1.0.0-beta
+1.0.0-alpha
 
 ### Changelog:
 ##### All Changes and Branch Updates to be listed below
@@ -52,7 +52,8 @@ $ rm -rf /usr/local/var/postgres && initdb /usr/local/var/postgres -E utf8
 ```
 
 ### To Dos
-
+- Google Maps Iteration Fix
+- Filter via API
 
 ### By Welters
 - Kartik Sharma
