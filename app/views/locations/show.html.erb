@@ -1,59 +1,71 @@
-<table border="2px">
-	<thead>
-		<tr>
-			<th>Heading:</th>
-			<th>Room:</th>
-			<th>Bedrooms:</th>
-			<th>Beds:</th>
-			<th>Bathrooms</th>
-			<th>Location</th>
-			<th>Ocuupancy</th>
-			<th>Description</th>
-			<th>Price Monthly</th>
-			<th>Price Nightly</th>
-			<th>Price Weekend</th>
-			<th>Price Weekly</th>
-			<th>Photo</th>
-			<th>Address</th>
-			<th>Provider</th>
-			<th>Url</th>
-			<th>Rating</th>
-			</tr
-		</tr>
-	</thead>
-	<tbody>
-		
-<%@results.each do |result|%>
-	<tr>
-	<td><%= result["attr"]["heading"]%></td>
-	<td><%= result["attr"]["roomType"]["text"]%></td>
-	<td><%= result["attr"]["bedrooms"]%></td>
-	<td><%= result["attr"]["beds"]%></td>
-	<td><%if result["attr"]["bathrooms"] < 0%>
-			<p>None</p>
-			<%else%>
-				<%=result["attr"]["bathrooms"]%>
-			<%end%></td>
-	<td><%= result["latLng"]%></td>
-	<td><%= result["attr"]["occupancy"]%></td>
-	<td><%= result["attr"]["description"]%></td>
-	<td><%= result["price"]["monthly"]%></td>
-	<td><%= result["price"]["nightly"]%></td>
-	<td><%= result["price"]["weekend"]%></td>
-	<td><%= result["price"]["weekly"]%></td>
-	<td><%= image_tag result["photos"][0]["large"]%></td>
-	<td><%= result["location"]["all"]%></td>
-	<td><%= result["provider"]["full"]%></td>
-	<td><%= result["provider"]["url"]%></td>
-	<td><%if result["reviews"]["rating"].to_i <0 %>
-					<p>None</p>
-			<%else%>
-				<%=result["reviews"]["rating"]%>
-			<%end%></td>
+<div class="container">
+	<%@results.each do |result|%>
+	<div class="row">
+		<div class="page-header">
+	  	<h1><%= result["attr"]["heading"]%></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<%= image_tag result["photos"][0]["large"], class: "img-thumbnail" %>
+		</div>
+		<div class="col-md-6">
+			<iframe width="600"height="450"frameborder="0" style="border:0"src="https://maps.google.com/maps?q='<%= result["latLng"]%>'&hl=es;z=14&amp;output=embed"></iframe>
+		</div>
 
-		</tr>
-	
-
-<%end%>
-</tbody>
-</table>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Specifications</h3>
+					</div>
+					<div class="panel-body">
+						<p><strong>Room Type: </strong><%= result["attr"]["roomType"]["text"]%></p>
+						<p><strong>Bedrooms: </strong><%= result["attr"]["bedrooms"]%></p>
+						<p><strong>Beds: </strong><%= result["attr"]["beds"]%></p>
+						<p><strong>Bathrooms: </strong><%if result["attr"]["bathrooms"] < 0%>
+																						<p>None</p>
+																						<%else%>
+																						<%=result["attr"]["bathrooms"]%>
+																					<%end%></p>
+						<p><strong>Occupancy: </strong><%= result["attr"]["occupancy"]%></p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Pricing</h3>
+					</div>
+					<div class="panel-body">
+						<p><strong>Monthly: </strong><%= result["price"]["monthly"]%></p>
+						<p><strong>Nightly: </strong><%= result["price"]["nightly"]%></p>
+						<p><strong>Weekly: </strong><%= result["price"]["weekly"]%></p>
+						<p><strong>Weekend: </strong><%= result["price"]["weekend"]%></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<address>
+					<strong>Address: </strong><br>
+					<%= result["location"]["all"]%><br>
+				</address>
+			</div>
+			<div class="col-md-3">
+				<strong>Service Provider: </strong><%= result["provider"]["full"]%><br>
+				<address>
+					<a href="mailto:<%= result["provider"]["full"]%>"><%= result["provider"]["full"]%></a><br>
+				</address>
+			</div>
+			<div class="col-md-3">
+				<strong>Rating: </strong><%= result["reviews"]["rating"]%>
+			</div>
+			<div class="col-md-3">
+				<a href="mailto:<%= result["provider"]["url"]%>"><%= result["provider"]["url"]%></a><br>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</div>
