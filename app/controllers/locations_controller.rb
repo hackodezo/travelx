@@ -17,7 +17,6 @@ class LocationsController < ApplicationController
     }))
 
      @results=@junk["result"]
-     binding.pry
   end
 
   # GET /locations/new
